@@ -109,12 +109,12 @@ nav {
 .movie__row {
   display: flex;
   align-items: center;
-  justify-content: center;
+
   flex-wrap: wrap;
   gap: 1rem;
   border-radius: 15px;
   overflow-y: scroll;
-  height: 200px;
+  height: 230px;
   flex-direction: column;
 }
 .movie__row::-webkit-scrollbar {
@@ -129,8 +129,9 @@ nav {
   object-fit: cover;
 }
 .movie__row img:hover {
+  border-radius: 15px;
   filter: blur(20px);
-  filter: brightness(150%);
+  filter: brightness(130%);
   transform: scale(1.05);
 }
 
@@ -153,7 +154,7 @@ nav {
     display: none;
   } */
   .nav__ul {
-    display: block;
+    display: none;
   }
   .nav__ul li {
     padding: 8px 0;

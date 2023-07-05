@@ -5,8 +5,7 @@ const movie__section = document.getElementsByClassName("movie__section");
 const apiPath = {
   fetchAllCetagoies: `${apiEndPoint}/genre/movie/list?api_key=${api_key}`,
 
-  fetchMoviesList: (id) =>
-    `${apiEndPoint}/discover/movie/list?api_key=${api_key}&with_genres=${id}`,
+  fetchMoviesList: `${apiEndPoint}/discover/movie/list?api_key=${api_key}`,
 
   fetchTrending: `${apiEndPoint}/trending/all/week?api_key=${api_key}&language=en-US`,
 
@@ -29,6 +28,7 @@ const apiPath = {
 const init = () => {
   fetchCategories();
   fetchTranding();
+  fetchNetflixOriginals();
 };
 
 //!  Movies Categories ::
@@ -37,14 +37,12 @@ const fetchCategories = async () => {
   const data = await response.json();
   const categories = data.genres;
   if (Array.isArray(categories) && categories.length) {
-    categories.forEach((item) => {
-      moviesCategories(item);
+    categories.forEach((fetchUrl, item) => {
+      // moviesCategories(item);
     });
   }
 };
-const moviesCategories = (item) => {
-  console.log(item);
-};
+// const moviesCategories = (item) => {};
 
 // ! Tranding Data ::
 const fetchTranding = async () => {
@@ -52,13 +50,6 @@ const fetchTranding = async () => {
   const data = await response.json();
   const tranding = data.results;
   trandingData(tranding);
-
-  // if (Array.isArray(tranding) && tranding.length) {
-  //   tranding.forEach((item) => {
-  //     trandingData(item);
-  //     console.table(item);
-  //   });
-  // }
 };
 
 const trandingData = (tranding) => {
@@ -66,27 +57,46 @@ const trandingData = (tranding) => {
   const movieList = tranding
     .map((item) => {
       return `
-      
             <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
     `;
     })
     .join(" ");
-
   const movieSecHTML = `
       ${movieList}
 `;
-  // console.log(movieSecHTML);
   const div = document.createElement("div");
   div.className = "movie__row";
   div.innerHTML = movieSecHTML;
-  // ! Append HTML in div ::
   movieCont.append(div);
 };
-// !  Loading Data ::
+
+// ! FetchNetflixOriginals ::
+const fetchNetflixOriginals = async () => {
+  const response = await fetch(apiPath.fetchNetflixOriginals);
+  const data = await response.json();
+  NetflixOriginals(data.results);
+};
+const NetflixOriginals = (NetflixOriginals) => {
+  const movieCont = document.getElementById("original__container");
+  const NetflixOriginalsItem = NetflixOriginals.map((item) => {
+    return `
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+  }).join(" ");
+  const SecHTML = `
+  ${NetflixOriginalsItem}
+  `;
+  const original = document.createElement("div");
+  original.className = "movie__row";
+  original.innerHTML = SecHTML;
+  movieCont.append(original);
+};
+
+// ! --------------------Loading Data----------------------- //
 window.addEventListener("load", () => {
   init();
 });
-// !  Loading ::
+// !  MAIN  ::
 let loader = document.getElementById("preloader");
 window.addEventListener("load", () => {
   setTimeout(() => {
