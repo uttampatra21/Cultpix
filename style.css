@@ -19,7 +19,7 @@
   z-index: 1000;
 }
 .container {
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 a {
   text-decoration: none;
@@ -98,7 +98,7 @@ nav {
 /* !======= */
 .movie__section-title {
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   align-items: center;
   gap: 5px;
 }
@@ -141,7 +141,7 @@ nav {
   border-top: 0.5px solid rgb(255 255 260 / 10%);
   margin-top: 14px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   /* .header {
     height: 100vh;
     position: fixed;
