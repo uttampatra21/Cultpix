@@ -109,12 +109,11 @@ nav {
 .movie__row {
   display: flex;
   align-items: center;
-
   flex-wrap: wrap;
   gap: 1rem;
   border-radius: 15px;
   overflow-y: scroll;
-  height: 230px;
+  height: 200px;
   flex-direction: column;
 }
 .movie__row::-webkit-scrollbar {
@@ -139,7 +138,6 @@ nav {
   margin: 0 auto;
   width: calc(100% - 80px);
   border-top: 0.5px solid rgb(255 255 260 / 10%);
-  margin-top: 14px;
 }
 @media screen and (max-width: 700px) {
   /* .header {
