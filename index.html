@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cultpix TV+</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://mars-images.imgix.net/LOGO%2096x96%20v%202.png?auto=compress"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .menuBar {
+      display: none;
+    }
+    @media screen and (max-width: 600px) {
+      .menuBar {
+        display: flex;
+        font-size: 1.5rem;
+        color: #ff000d;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <nav>
+        <i class="bx bx-menu menuBar"></i>
+        <div class="blank"></div>
+        <a href="/">
+          <img
+            width="120"
+            src="https://marscode.s3.eu-north-1.amazonaws.com/assets/img/LOGO%208.png"
+            class="title"
+          />
+        </a>
+        <div class="right__container">
+          <div class="search">
+            <a href="/Search.html">
+              <i class="bx bx-search"></i>
+              <input class="search__input" type="text" placeholder="Search" />
+            </a>
+          </div>
+          <div class="log_in">
+            <a href="#"> Sign In </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="">
+      <div id="preloader"></div>
+      <div class="movie__section">
+        <h2 class="movie__section-title container">
+          Watch Premieres for Free
+          <i class="bx bxs-chevron-right"></i>
+        </h2>
+        <div class="movies__container">
+          <!-- <div class="movie__row">
+            <img
+              class="movie__postars"
+              src="https://is4-ssl.mzstatic.com/image/thumb/TFK62rQMTTWVNoPgxjIkPQ/738x416.webp"
+              alt=""
+            />
+          </div> -->
+        </div>
+        <div class="divider"></div>
+      </div>
+    </main>
+    <!-- !===== -->
+    <script src="index.js"></script>
+  </body>
+</html>
