@@ -24,6 +24,10 @@ const enterData = (data) => {
         border-radius: 10px;
         width: 100%;
         object-fit: cover;
+        border-radius: 15px;
+        filter: brightness(110%);
+        }
+        
         
         " src="${IMGPATH + item.poster_path}">
         `;
@@ -31,7 +35,7 @@ const enterData = (data) => {
   });
 };
 
-const searchBox = document.querySelector(".search__input");
+const searchBox = document.querySelector(".main__search");
 searchBox.addEventListener("keyup", (event) => {
   if (event.target.value != "") {
     getApi(SEARCHAPI + event.target.value);

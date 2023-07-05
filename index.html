@@ -14,7 +14,6 @@
       rel="stylesheet"
     />
   </head>
-  <style></style>
   <body>
     <header>
       <nav>
@@ -27,11 +26,11 @@
             />
           </a>
         </div>
-        <i class="bx bx-menu menuBar"></i>
+        <i class="bx bx-menu" id="menuBar"></i>
         <ul class="nav__ul">
           <li class="right__container">
             <div class="search">
-              <a href="search.html">
+              <a href="/search.html">
                 <i class="bx bx-search"></i>
                 <input class="search__input" type="text" placeholder="Search" />
               </a>
@@ -45,7 +44,7 @@
         </ul>
       </nav>
     </header>
-    <main class="">
+    <main>
       <div id="preloader"></div>
       <div class="movie__section">
         <div class="movies__container" id="movies__container">
@@ -59,6 +58,22 @@
         <div class="original__container" id="original__container">
           <h2 class="movie__section-title container">
             Top Chart
+            <i class="bx bxs-chevron-right"></i>
+          </h2>
+        </div>
+        <div class="divider"></div>
+
+        <div class="fetchTopRated" id="fetchTopRated">
+          <h2 class="movie__section-title container">
+            Top Rated
+            <i class="bx bxs-chevron-right"></i>
+          </h2>
+        </div>
+        <div class="divider"></div>
+
+        <div class="fetchActionMovies" id="fetchActionMovies">
+          <h2 class="movie__section-title container">
+            Latest Action
             <i class="bx bxs-chevron-right"></i>
           </h2>
         </div>

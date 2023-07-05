@@ -29,9 +29,11 @@ const init = () => {
   fetchCategories();
   fetchTranding();
   fetchNetflixOriginals();
+  fetchTopRated();
+  fetchActionMovies();
 };
 
-//!  Movies Categories ::
+//!  --------------Movies Categories----------------//
 const fetchCategories = async () => {
   const response = await fetch(apiPath.fetchAllCetagoies);
   const data = await response.json();
@@ -42,9 +44,8 @@ const fetchCategories = async () => {
     });
   }
 };
-// const moviesCategories = (item) => {};
 
-// ! Tranding Data ::
+// ! ------------------Tranding Data---------------//
 const fetchTranding = async () => {
   const response = await fetch(apiPath.fetchTrending);
   const data = await response.json();
@@ -70,7 +71,7 @@ const trandingData = (tranding) => {
   movieCont.append(div);
 };
 
-// ! FetchNetflixOriginals ::
+//! ------------FetchNetflixOriginals------------------//
 const fetchNetflixOriginals = async () => {
   const response = await fetch(apiPath.fetchNetflixOriginals);
   const data = await response.json();
@@ -92,6 +93,55 @@ const NetflixOriginals = (NetflixOriginals) => {
   movieCont.append(original);
 };
 
+// ! --------------------fetchTopRated----------------------- //
+const fetchTopRated = async () => {
+  const response = await fetch(apiPath.fetchTopRated);
+  const data = await response.json();
+  topRated(data.results);
+};
+const topRated = (topRated) => {
+  const poster = topRated
+    .map((item) => {
+      return `
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+    })
+    .join(" ");
+  const topRatedHTML = `
+  ${poster}
+  `;
+  const fetchRated = document.getElementById("fetchTopRated");
+  const topRatedcont = document.createElement("div");
+  topRatedcont.className = "movie__row";
+  topRatedcont.innerHTML = topRatedHTML;
+  fetchRated.append(topRatedcont);
+};
+
+// ! --------------------fetchActionMovies----------------------- //
+const fetchActionMovies = async () => {
+  const response = await fetch(apiPath.fetchActionMovies);
+  const data = await response.json();
+  ActionMovies(data.results);
+};
+const ActionMovies = (ActionMovies) => {
+  const actionData = ActionMovies.map((item) => {
+    return `
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+  }).join(" ");
+  const actionHTML = `
+  ${actionData}
+  `;
+  const ActionMovie = document.getElementById("fetchActionMovies");
+  const actionDiv = document.createElement("div");
+  actionDiv.className = "movie__row";
+  actionDiv.innerHTML = actionHTML;
+  ActionMovie.append(actionDiv);
+};
+
+// ! --------------------Loading Data----------------------- //
+// ! --------------------Loading Data----------------------- //
+// ! --------------------Loading Data----------------------- //
 // ! --------------------Loading Data----------------------- //
 window.addEventListener("load", () => {
   init();
