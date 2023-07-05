@@ -1,5 +1,6 @@
 const api_key = "239d3a45321204f077707a2deaae0b75";
 const apiEndPoint = `https://api.themoviedb.org/3`;
+const IMGPATH = "https://image.tmdb.org/t/p/original";
 const movie__section = document.getElementsByClassName("movie__section");
 const apiPath = {
   fetchAllCetagoies: `${apiEndPoint}/genre/movie/list?api_key=${api_key}`,
@@ -42,43 +43,45 @@ const fetchCategories = async () => {
   }
 };
 const moviesCategories = (item) => {
-  // console.log(item);
+  console.log(item);
 };
+
 // ! Tranding Data ::
 const fetchTranding = async () => {
   const response = await fetch(apiPath.fetchTrending);
   const data = await response.json();
   const tranding = data.results;
-  if (Array.isArray(tranding) && tranding.length) {
-    tranding.forEach((item) => {
-      console.log(item);
-      const err = `
-        <div class="movie__row">
-            <img
-              class="movie__postars"
-              src="${item.poster_path}"
-              alt=""
-            />
-          </div>
-      `;
-    });
-  }
+  trandingData(tranding);
+
+  // if (Array.isArray(tranding) && tranding.length) {
+  //   tranding.forEach((item) => {
+  //     trandingData(item);
+  //     console.table(item);
+  //   });
+  // }
 };
 
-// const trandingData = (item) => {
-//   console.log(item);
-//   const movieBox = document.createElement("div");
-//   movieBox.classList.add = "movie__row";
-//   movieBox.innerHTML = `
-//             <img
-//               class="movie__postars"
+const trandingData = (tranding) => {
+  const movieCont = document.getElementById("movies__container");
+  const movieList = tranding
+    .map((item) => {
+      return `
+      
+            <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+    })
+    .join(" ");
 
-//               src="${item.backdrop_path}"
-//               alt=""
-//             />
-//   `;
-//   movie__section.appendChild(movieBox);
-// };
+  const movieSecHTML = `
+      ${movieList}
+`;
+  // console.log(movieSecHTML);
+  const div = document.createElement("div");
+  div.className = "movie__row";
+  div.innerHTML = movieSecHTML;
+  // ! Append HTML in div ::
+  movieCont.append(div);
+};
 // !  Loading Data ::
 window.addEventListener("load", () => {
   init();

@@ -29,24 +29,32 @@ body {
   color: #fff;
 }
 header {
-  padding: 0.7rem 1.5rem;
+  padding: 1rem;
   background-color: #0d1117;
   position: sticky;
   top: 0;
   background-color: #0d1117;
   z-index: 1;
 }
-
+.menuBar {
+  display: none;
+  font-size: 2rem;
+  color: #ff000d;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.right__container {
+.nav__ul {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
+
 .search {
   border: 1px solid #fff;
   padding: 4px 10px;
@@ -77,7 +85,7 @@ nav {
   cursor: pointer;
 }
 .log_in a {
-  padding: 8px 1rem;
+  padding: 6px 1rem;
   background-color: #e50914;
   border-radius: 8px;
   color: #fff;
@@ -90,29 +98,26 @@ nav {
 /* !======= */
 .movie__section-title {
   display: flex;
+  margin-bottom: 1.5rem;
   align-items: center;
   gap: 5px;
 }
 .movie__section-title i {
   color: #babcc1;
 }
-.movies__container {
-  padding: 1.5rem 0;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 0.8rem;
-  overflow-x: scroll;
-}
-.movies__container::-webkit-scrollbar {
-  display: none;
-}
 
 .movie__row {
-  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   border-radius: 15px;
+  overflow-y: scroll;
+  height: 200px;
+  flex-direction: column;
 }
-.movie__postars {
+.movie__row img {
   width: 300px;
   border-radius: 15px;
   cursor: pointer;
@@ -120,13 +125,9 @@ nav {
   transition: 0.8s;
   object-fit: cover;
 }
-.movie__row::-webkit-scrollbar {
-  display: none;
-}
-
-.movie__row:hover img {
+.movie__row img:hover {
   filter: blur(20px);
-  filter: brightness(120%);
+  filter: brightness(150%);
   transform: scale(1.05);
 }
 
@@ -137,8 +138,36 @@ nav {
   margin-top: 14px;
 }
 @media screen and (max-width: 600px) {
+  .header {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background: #040204;
+    transition: top 2s ease;
+    display: none;
+  }
+  .nav__ul {
+    display: block;
+  }
+  .nav__ul li {
+    padding: 8px 0;
+  }
+  .right__container {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .search {
+    border: none;
+    padding: 0;
+  }
+  .bx-search {
+    font-size: 2rem;
+  }
   header {
-    padding: 0.7rem 1rem;
+    padding: 1rem 1rem;
   }
 
   header img {
@@ -147,11 +176,8 @@ nav {
   .blank {
     display: none;
   }
-  .search {
-    display: none;
-  }
   .log_in a {
-    padding: 5px 0.7rem;
+    padding: 5px 1rem;
     background-color: #e50914;
     border-radius: 8px;
     color: #fff;
