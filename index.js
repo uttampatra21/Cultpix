@@ -31,6 +31,8 @@ const init = () => {
   fetchNetflixOriginals();
   fetchTopRated();
   fetchActionMovies();
+  fetchComedyMovies();
+  fetchHorrorMovies();
 };
 
 //!  --------------Movies Categories----------------//
@@ -139,8 +141,49 @@ const ActionMovies = (ActionMovies) => {
   ActionMovie.append(actionDiv);
 };
 
-// ! --------------------Loading Data----------------------- //
-// ! --------------------Loading Data----------------------- //
+// ! --------------------fetchComedyMovies----------------------- //
+const fetchComedyMovies = async () => {
+  const response = await fetch(apiPath.fetchComedyMovies);
+  const data = await response.json();
+  ComedyMovies(data.results);
+};
+const ComedyMovies = (ActionMovies) => {
+  const actionData = ActionMovies.map((item) => {
+    return `
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+  }).join(" ");
+  const actionHTML = `
+  ${actionData}
+  `;
+  const ActionMovie = document.getElementById("fetchComedyMovies");
+  const actionDiv = document.createElement("div");
+  actionDiv.className = "movie__row";
+  actionDiv.innerHTML = actionHTML;
+  ActionMovie.append(actionDiv);
+};
+
+// ! -------------------- ----------------------- //
+const fetchHorrorMovies = async () => {
+  const response = await fetch(apiPath.fetchHorrorMovies);
+  const data = await response.json();
+  ActionMovies(data.results);
+};
+const HorrorMovies = (ActionMovies) => {
+  const actionData = ActionMovies.map((item) => {
+    return `
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    `;
+  }).join(" ");
+  const actionHTML = `
+  ${actionData}
+  `;
+  const ActionMovie = document.getElementById("fetchHorrorMovies");
+  const actionDiv = document.createElement("div");
+  actionDiv.className = "movie__row";
+  actionDiv.innerHTML = actionHTML;
+  ActionMovie.append(actionDiv);
+};
 // ! --------------------Loading Data----------------------- //
 // ! --------------------Loading Data----------------------- //
 window.addEventListener("load", () => {
