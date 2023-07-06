@@ -91,7 +91,87 @@ nav {
 .log_in a:hover {
   background: #bb070d;
 }
+/* !======= */
+.banner__content {
+  width: 100%;
+  height: 88vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-left: 1rem;
+}
+.banner__fade {
+  height: 10%;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #141414
+  );
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+}
+.banner__title-cont {
+  padding-top: 70px;
+}
+.banner__title h4 {
+  font-size: 60px;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.banner__cetagorie {
+  margin-bottom: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+}
 
+.banner__description p {
+  max-width: 45%;
+  text-align: start;
+  line-height: 1.3;
+  color: #ffffff;
+  font-size: 16px;
+}
+.banner__button {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.bx-play,
+.bx-info-circle {
+  font-size: 2.4rem;
+}
+.banner__bottons-play a {
+  padding: 4px 0.8rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.banner__bottons-info a {
+  padding: 4px 0.8rem;
+  background-color: rgb(109 109 110 / 70%);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.banner__bottons-play a {
+  display: flex;
+  align-items: center;
+}
+.banner__bottons-info a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* !======= */
 .movie__section-title {
   display: flex;
@@ -110,7 +190,7 @@ nav {
   gap: 1rem;
   border-radius: 15px;
   overflow-y: scroll;
-  height: 220px;
+  height: 240px;
   flex-direction: column;
   text-align: center;
 }
@@ -133,8 +213,9 @@ nav {
 }
 .movie__title-rat {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
   font-size: 11px;
   padding: 5px;
 }
@@ -143,6 +224,7 @@ nav {
   width: calc(100% - 80px);
   border-top: 0.5px solid rgb(255 255 260 / 10%);
 }
+
 @media screen and (max-width: 700px) {
   #menuBar {
     display: flex;
@@ -178,7 +260,7 @@ nav {
     font-size: 1.5rem;
   }
   header {
-    padding: 1rem 1rem;
+    padding: 0.6rem 0.8rem;
   }
 
   header img {
@@ -196,7 +278,7 @@ nav {
   }
 
   .movie__section-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .movie__postars {
     width: 180px;
@@ -204,5 +286,17 @@ nav {
   .search__movie-postars {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.4rem;
+  }
+  .movie__row {
+    height: 200px;
+  }
+  .movie__row img,
+  .movie__container-box {
+    width: 250px;
+  }
+  .movie__title-rat {
+    font-size: 12px;
+    flex-direction: column;
+    align-items: start;
   }
 }

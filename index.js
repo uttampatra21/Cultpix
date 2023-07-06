@@ -24,8 +24,50 @@ const init = () => {
   fetchActionMovies();
   fetchComedyMovies();
   fetchDocumentaries();
+  buildBanner();
 };
 
+//!  --------------Banner----------------//
+const buildBanner = async () => {
+  const response = await fetch(apiPath.fetchTrending);
+  const data = await response.json();
+  const randomData = Math.round(Math.random() * data.results.length);
+  buildBannerSection(data.results[randomData]);
+};
+const buildBannerSection = (buildBannerSection) => {
+  console.log(buildBannerSection);
+  const bannerimg = document.getElementById("bannerimg");
+  bannerimg.style.backgroundImage = `url('${IMGPATH}${buildBannerSection.backdrop_path}')`;
+  bannerimg.innerHTML = `
+  <div class="banner__title-cont">
+          <div class="banner__title">
+            <h4>${buildBannerSection.original_title}</h4>
+          </div>
+          <div class="banner__cetagorie">
+            <h3>Released : <strong>${buildBannerSection.release_date}</strong></h3>
+          </div>
+          <div class="banner__description">
+            <p>
+            ${buildBannerSection.overview}
+            </p>
+          </div>
+          <div class="banner__button">
+            <div class="banner__bottons-play">
+              <a href="">
+                <i class="bx bx-play"></i>
+                Play
+              </a>
+            </div>
+            <div class="banner__bottons-info">
+              <a href="#" class="">
+                <i class="bx bx-info-circle"></i>
+                More Info
+              </a>
+            </div>
+          </div>
+        </div>
+  `;
+};
 //!  --------------Movies Categories----------------//
 const fetchCategories = async () => {
   const response = await fetch(apiPath.fetchAllCetagoies);
@@ -57,7 +99,6 @@ const trandingData = (tranding) => {
         <div className="movie__title">
             ${item.title}
         </div>
-        <div className="danda">|</div>
         <div className="movie__rating">
             ${item.release_date}
         </div>
@@ -85,13 +126,12 @@ const NetflixOriginals = (NetflixOriginals) => {
   const movieCont = document.getElementById("original__container");
   const NetflixOriginalsItem = NetflixOriginals.map((item) => {
     return `
-    <div>
-  <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-  <div class="movie__title-rat">
+    <div class="movie__container-box">
+        <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+        <div class="movie__title-rat">
       <div className="movie__title">
           ${item.name}
       </div>
-      <div className="danda">|</div>
       <div className="movie__rating">
           ${item.first_air_date}
       </div>
@@ -117,7 +157,6 @@ const fetchTopRated = async () => {
 const topRated = (topRated) => {
   const poster = topRated
     .map((item) => {
-      console.log(item);
       return `
     <div>
   <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
@@ -125,7 +164,7 @@ const topRated = (topRated) => {
       <div className="movie__title">
           ${item.original_title}
       </div>
-      <div className="danda">|</div>
+      
       <div className="movie__rating">
           ${item.release_date}
       </div>
@@ -159,7 +198,7 @@ const ActionMovies = (ActionMovies) => {
             <div className="movie__title">
                 ${item.original_title}
             </div>
-            <div className="danda">|</div>
+            
             <div className="movie__rating">
                 ${item.release_date}
             </div>
@@ -192,7 +231,7 @@ const ComedyMovies = (ActionMovies) => {
       <div className="movie__title">
           ${item.original_title}
       </div>
-      <div className="danda">|</div>
+      
       <div className="movie__rating">
           ${item.release_date}
       </div>
@@ -225,7 +264,7 @@ const Documentaries = (Documentaries) => {
       <div className="movie__title">
           ${item.original_title}
       </div>
-      <div className="danda">|</div>
+      
       <div className="movie__rating">
           ${item.release_date}
       </div>
