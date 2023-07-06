@@ -110,27 +110,34 @@ nav {
   gap: 1rem;
   border-radius: 15px;
   overflow-y: scroll;
-  height: 200px;
+  height: 220px;
   flex-direction: column;
+  text-align: center;
 }
 .movie__row::-webkit-scrollbar {
   display: none;
 }
 .movie__row img {
-  width: 300px;
+  width: 310px;
   border-radius: 15px;
   cursor: pointer;
   overflow: hidden;
-  transition: 0.8s;
+  transition: 0.7s;
   object-fit: cover;
 }
 .movie__row img:hover {
   border-radius: 15px;
   filter: blur(20px);
-  filter: brightness(130%);
+  filter: brightness(100%);
   transform: scale(1.05);
 }
-
+.movie__title-rat {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+  padding: 5px;
+}
 .divider {
   margin: 0 auto;
   width: calc(100% - 80px);

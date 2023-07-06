@@ -4,23 +4,14 @@ const IMGPATH = "https://image.tmdb.org/t/p/original";
 const movie__section = document.getElementsByClassName("movie__section");
 const apiPath = {
   fetchAllCetagoies: `${apiEndPoint}/genre/movie/list?api_key=${api_key}`,
-
   fetchMoviesList: `${apiEndPoint}/discover/movie/list?api_key=${api_key}`,
-
   fetchTrending: `${apiEndPoint}/trending/all/week?api_key=${api_key}&language=en-US`,
-
   fetchNetflixOriginals: `${apiEndPoint}/discover/tv?api_key=${api_key}&with networks=213`,
-
   fetchTopRated: `${apiEndPoint}/movie/top_rated?api_key=${api_key}&language=en-US`,
-
   fetchActionMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres=28`,
-
   fetchComedyMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres=35`,
-
   fetchHorrorMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}with_genres=27`,
-
   fetchRomanceMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres-10749`,
-
   fetchDocumentaries: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres=99`,
 };
 
@@ -32,7 +23,7 @@ const init = () => {
   fetchTopRated();
   fetchActionMovies();
   fetchComedyMovies();
-  fetchHorrorMovies();
+  fetchDocumentaries();
 };
 
 //!  --------------Movies Categories----------------//
@@ -60,7 +51,18 @@ const trandingData = (tranding) => {
   const movieList = tranding
     .map((item) => {
       return `
-            <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+      <div>
+    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    <div class="movie__title-rat">
+        <div className="movie__title">
+            ${item.title}
+        </div>
+        <div className="danda">|</div>
+        <div className="movie__rating">
+            ${item.release_date}
+        </div>
+    </div>
+    </div>
     `;
     })
     .join(" ");
@@ -83,8 +85,19 @@ const NetflixOriginals = (NetflixOriginals) => {
   const movieCont = document.getElementById("original__container");
   const NetflixOriginalsItem = NetflixOriginals.map((item) => {
     return `
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-    `;
+    <div>
+  <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+  <div class="movie__title-rat">
+      <div className="movie__title">
+          ${item.name}
+      </div>
+      <div className="danda">|</div>
+      <div className="movie__rating">
+          ${item.first_air_date}
+      </div>
+  </div>
+  </div>
+  `;
   }).join(" ");
   const SecHTML = `
   ${NetflixOriginalsItem}
@@ -104,9 +117,21 @@ const fetchTopRated = async () => {
 const topRated = (topRated) => {
   const poster = topRated
     .map((item) => {
+      console.log(item);
       return `
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-    `;
+    <div>
+  <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+  <div class="movie__title-rat">
+      <div className="movie__title">
+          ${item.original_title}
+      </div>
+      <div className="danda">|</div>
+      <div className="movie__rating">
+          ${item.release_date}
+      </div>
+  </div>
+  </div>
+  `;
     })
     .join(" ");
   const topRatedHTML = `
@@ -128,8 +153,19 @@ const fetchActionMovies = async () => {
 const ActionMovies = (ActionMovies) => {
   const actionData = ActionMovies.map((item) => {
     return `
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-    `;
+    <div>
+      <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+        <div class="movie__title-rat">
+            <div className="movie__title">
+                ${item.original_title}
+            </div>
+            <div className="danda">|</div>
+            <div className="movie__rating">
+                ${item.release_date}
+            </div>
+        </div>
+    </div>
+  `;
   }).join(" ");
   const actionHTML = `
   ${actionData}
@@ -150,8 +186,19 @@ const fetchComedyMovies = async () => {
 const ComedyMovies = (ActionMovies) => {
   const actionData = ActionMovies.map((item) => {
     return `
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-    `;
+    <div>
+  <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+  <div class="movie__title-rat">
+      <div className="movie__title">
+          ${item.original_title}
+      </div>
+      <div className="danda">|</div>
+      <div className="movie__rating">
+          ${item.release_date}
+      </div>
+  </div>
+  </div>
+  `;
   }).join(" ");
   const actionHTML = `
   ${actionData}
@@ -163,27 +210,39 @@ const ComedyMovies = (ActionMovies) => {
   ActionMovie.append(actionDiv);
 };
 
-// ! -------------------- ----------------------- //
-const fetchHorrorMovies = async () => {
-  const response = await fetch(apiPath.fetchHorrorMovies);
+// ! -------------------- Documentaries ----------------------- //
+const fetchDocumentaries = async () => {
+  const response = await fetch(apiPath.fetchDocumentaries);
   const data = await response.json();
-  ActionMovies(data.results);
+  Documentaries(data.results);
 };
-const HorrorMovies = (ActionMovies) => {
-  const actionData = ActionMovies.map((item) => {
+const Documentaries = (Documentaries) => {
+  const romanceItem = Documentaries.map((item) => {
     return `
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
-    `;
-  }).join(" ");
-  const actionHTML = `
-  ${actionData}
+    <div>
+  <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+  <div class="movie__title-rat">
+      <div className="movie__title">
+          ${item.original_title}
+      </div>
+      <div className="danda">|</div>
+      <div className="movie__rating">
+          ${item.release_date}
+      </div>
+  </div>
+  </div>
   `;
-  const ActionMovie = document.getElementById("fetchHorrorMovies");
-  const actionDiv = document.createElement("div");
-  actionDiv.className = "movie__row";
-  actionDiv.innerHTML = actionHTML;
-  ActionMovie.append(actionDiv);
+  }).join(" ");
+  const DocumentariesHTML = `
+  ${romanceItem}
+  `;
+  const DocumentariesMovie = document.getElementById("fetchDocumentaries");
+  const DocumentariesDiv = document.createElement("div");
+  DocumentariesDiv.className = "movie__row";
+  DocumentariesDiv.innerHTML = DocumentariesHTML;
+  DocumentariesMovie.append(DocumentariesDiv);
 };
+
 // ! --------------------Loading Data----------------------- //
 // ! --------------------Loading Data----------------------- //
 window.addEventListener("load", () => {
