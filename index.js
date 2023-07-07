@@ -1,6 +1,8 @@
 const api_key = "239d3a45321204f077707a2deaae0b75";
+const youTubeKey = ``;
 const apiEndPoint = `https://api.themoviedb.org/3`;
 const IMGPATH = "https://image.tmdb.org/t/p/original";
+const youTube = `https://www.youtube.com/watch?v=${youTubeKey}`;
 const movie__section = document.getElementsByClassName("movie__section");
 const apiPath = {
   fetchAllCetagoies: `${apiEndPoint}/genre/movie/list?api_key=${api_key}`,
@@ -13,6 +15,18 @@ const apiPath = {
   fetchHorrorMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}with_genres=27`,
   fetchRomanceMovies: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres-10749`,
   fetchDocumentaries: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres=99`,
+};
+
+const menuBar = () => {
+  const showBar = document.getElementById("showBar");
+  const closeBar = document.getElementById("closeBar");
+  const navUl = document.getElementById("top");
+  navUl.style.top = "0";
+};
+
+const closeBar = () => {
+  const navUl = document.getElementById("top");
+  navUl.style.top = "-100%";
 };
 
 //! boots up data ::
@@ -35,7 +49,8 @@ const buildBanner = async () => {
   buildBannerSection(data.results[randomData]);
 };
 const buildBannerSection = (buildBannerSection) => {
-  console.log(buildBannerSection);
+  const overview = buildBannerSection.overview;
+  const overView = overview.slice(0, 100);
   const bannerimg = document.getElementById("bannerimg");
   bannerimg.style.backgroundImage = `url('${IMGPATH}${buildBannerSection.backdrop_path}')`;
   bannerimg.innerHTML = `
@@ -48,7 +63,7 @@ const buildBannerSection = (buildBannerSection) => {
           </div>
           <div class="banner__description">
             <p>
-            ${buildBannerSection.overview}
+            ${overView}
             </p>
           </div>
           <div class="banner__button">
@@ -94,7 +109,7 @@ const trandingData = (tranding) => {
     .map((item) => {
       return `
       <div>
-    <img class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
+    <img  class="movie__postars" src="${IMGPATH}${item.backdrop_path}"/>
     <div class="movie__title-rat">
         <div className="movie__title">
             ${item.title}
@@ -114,6 +129,12 @@ const trandingData = (tranding) => {
   div.className = "movie__row";
   div.innerHTML = movieSecHTML;
   movieCont.append(div);
+
+  const movie__row = document.getElementsByClassName("movie__row");
+
+  movie__row.addEventListener("click", () => {
+    console.log("llll");
+  });
 };
 
 //! ------------FetchNetflixOriginals------------------//
@@ -282,7 +303,6 @@ const Documentaries = (Documentaries) => {
   DocumentariesMovie.append(DocumentariesDiv);
 };
 
-// ! --------------------Loading Data----------------------- //
 // ! --------------------Loading Data----------------------- //
 window.addEventListener("load", () => {
   init();

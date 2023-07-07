@@ -76,30 +76,3 @@ input {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
-
-footer {
-  padding: 3rem 2rem;
-  background-color: #0d1117;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  user-select: none;
-}
-.left__footer p {
-  color: rgb(255 255 255 / 64%);
-  font-size: 12px;
-  text-align: center;
-}
-.right__footer {
-  width: 100%;
-  justify-content: end;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.right__footer span {
-  color: rgba(235, 226, 226, 0.855);
-  font-size: 12px;
-}

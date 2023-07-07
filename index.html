@@ -26,8 +26,9 @@
             />
           </a>
         </div>
-        <i class="bx bx-menu" id="menuBar"></i>
-        <ul class="nav__ul">
+        <i class="bx bx-menu" id="showBar" onclick="menuBar()"></i>
+        <ul class="nav__ul" id="top">
+          <i class="bx bx-x" id="closeBar" onclick="closeBar()"></i>
           <li class="right__container">
             <div class="search">
               <a href="/search.html">
@@ -97,19 +98,18 @@
             <i class="bx bxs-chevron-right"></i>
           </h2>
         </div>
-        <div class="divider"></div>
       </div>
     </main>
     <!-- !===== -->
-    <script>
-      const header = document.getElementsByTagName("header");
-      const openMenu = document.querySelector(".menuBar");
-      // const header = document.getElementsByTagName("header");
-      // openMenu.addEventListener("click", () => {
-      //   header.style.display = "flex";
-      //   header.style.top = "0";
-      // });
-    </script>
+    <footer>
+      <div class="left__footer">
+        <p>Copyright © 2023 Cultpix Inc. All right reserved.</p>
+      </div>
+      <div class="right__footer">
+        <span class="united">United States</span>
+        <span>English</span>
+      </div>
+    </footer>
     <script src="index.js"></script>
   </body>
 </html>

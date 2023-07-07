@@ -6,6 +6,17 @@ const SEARCHAPI =
 
 const container = document.querySelector(".search__movie-postars");
 
+// ! MenuBar Set up
+const menuBar = () => {
+  const showBar = document.getElementById("showBar");
+  const closeBar = document.getElementById("closeBar");
+  const navUl = document.getElementById("top");
+  navUl.style.top = "0";
+};
+const closeBar = () => {
+  const navUl = document.getElementById("top");
+  navUl.style.top = "-100%";
+};
 const getApi = async (api) => {
   const response = await fetch(api);
   const data = await response.json();
