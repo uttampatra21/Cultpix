@@ -17,13 +17,13 @@ const apiPath = {
   fetchDocumentaries: `${apiEndPoint}/discover/movie?api_key=${api_key}&with_genres=99`,
 };
 
+// ! MenuBar Set up
 const menuBar = () => {
   const showBar = document.getElementById("showBar");
   const closeBar = document.getElementById("closeBar");
   const navUl = document.getElementById("top");
   navUl.style.top = "0";
 };
-
 const closeBar = () => {
   const navUl = document.getElementById("top");
   navUl.style.top = "-100%";

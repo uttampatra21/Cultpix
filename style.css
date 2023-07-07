@@ -34,7 +34,7 @@ header {
   position: sticky;
   top: 0;
   background-color: #0d1117;
-  z-index: 1;
+  z-index: 1000;
 }
 #showBar {
   font-size: 2rem;
@@ -310,7 +310,7 @@ footer {
     font-size: 1.5rem;
   }
   header {
-    padding: 0.6rem 0.8rem;
+    padding: 0.8rem 0.8rem;
   }
 
   header img {

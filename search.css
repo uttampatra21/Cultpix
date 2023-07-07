@@ -76,3 +76,10 @@ input {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
+
+@media screen and (max-width: 550px) {
+  .search__movie-postars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+}
